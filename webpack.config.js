@@ -1,9 +1,10 @@
 var path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './server/index.js',
+    app: './src/main.js',
   },
   output: {
     path: path.resolve(__dirname, './public/dist'),
@@ -71,7 +72,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CleanWebpackPlugin(['dist/*.*'])
   ],
   resolve: {
     alias: {
@@ -80,13 +82,16 @@ module.exports = {
     extensions: ['*', '.js', '.vue', '.json'],
     modules: ['node_modules']
   },
-  // devServer: {
-  //   historyApiFallback: true,
-  //   noInfo: true,
-  //   overlay: true,
-  // },
-  // performance: {
-  //   hints: false,
-  // },
+  devServer: {
+    port: 8080,
+    contentBase: './public',
+    open: true,
+    proxy: {
+      '/api': 'http://localhost:8080/'
+    }
+  },
+  performance: {
+    hints: false
+  }
   // devtool: '#eval-source-map',
 };

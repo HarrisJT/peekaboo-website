@@ -4,26 +4,23 @@ var compression = require('compression');
 var helmet = require('helmet');
 var morgan = require('morgan');
 var debug = require('debug')('app');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 
 var app = express();
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
-// const isDev = (process.env.NODE_ENV || 'development') === 'development';
-console.log(process.env.NODE_ENV);
-console.log('in index.js')
-debug('ENV: %s', process.env.NODE_ENV);
+const isDev = (process.env.NODE_ENV || 'development') === 'development';
+console.log(isDev);
+if (isDev) {
+  var webpack = require('webpack');
+  var webpackConfig = require('../webpack.config');
+  var compiler = webpack(webpackConfig);
 
-// if (isDev) {
-//   var webpack = require('webpack');
-//   var webpackConfig = require('../webpack.config');
-//   var compiler = webpack(webpackConfig);
-
-//   app.use(require('webpack-dev-middleware')(compiler, {
-//     noInfo: true, publicPath: webpackConfig.output.publicPath
-//   }));
-//   app.use(require('webpack-hot-middleware')(compiler));
-// }
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+  }));
+  app.use(require('webpack-hot-middleware')(compiler));
+}
 
 // not sure if this is necessary
 try {
@@ -36,9 +33,9 @@ try {
   app.use(morgan('dev'));
   app.use(compression());
   app.use(helmet());
-  app.use(function(err, req, res) {
+  app.use(function(err) {
     console.error(err.stack);
-    res.status(500).send('Error caught!');
+    // res.status(500).send('Error caught!');
   });
 
   app.set('view engine', 'pug');
