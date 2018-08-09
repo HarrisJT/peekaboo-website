@@ -1,10 +1,9 @@
 var path = require('path');
-var webpack = require('webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  mode: 'development',
   entry: {
-    app: './src/main.js',
+    app: './server/index.js',
   },
   output: {
     path: path.resolve(__dirname, './public/dist'),
@@ -13,6 +12,8 @@ module.exports = {
   },
   module: {
     rules: [
+      // Loader for CSS, both .css
+      // and <style> in vue files
       {
         test: /\.css$/,
         use: [
@@ -20,6 +21,8 @@ module.exports = {
           'css-loader',
         ],
       },
+      // Loader for SCSS, both .scss
+      // and <style lang="scss"> in vue files
       {
         test: /\.scss$/,
         use: [
@@ -28,51 +31,25 @@ module.exports = {
           'sass-loader',
         ],
       },
-      {
-        test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader?indentedSyntax',
-        ],
-      },
+      // Loader for Vue files
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            scss: [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader',
-            ],
-            sass: [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax',
-            ],
-          },
-          transformToRequire: {
-            img: 'src',
-            image: 'xlink:href',
-            'b-img': 'src',
-            'b-img-lazy': ['src', 'blank-src'],
-            'b-card': 'img-src',
-            'b-card-img': 'img-src',
-            'b-carousel-slide': 'img-src',
-            'b-embed': 'src',
-          },
-          // other vue-loader options go here
-        },
       },
+      // Loader for pug files, both .pug
+      // and <template lang="pug"> in vue files
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
+      },
+      // Loader for JS, both .js files
+      // and <script> in vue files
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      // Loader for images
       {
         test: /\.(png|jpg|gif|svg|jpeg)$/,
         loader: 'file-loader',
@@ -80,6 +57,7 @@ module.exports = {
           name: '[name].[ext]?[hash]',
         },
       },
+      // Loader for fonts
       {
         test: /font.*\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [{
@@ -92,39 +70,23 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new VueLoaderPlugin()
+  ],
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
     },
     extensions: ['*', '.js', '.vue', '.json'],
+    modules: ['node_modules']
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true,
-  },
-  performance: {
-    hints: false,
-  },
-  devtool: '#eval-source-map',
+  // devServer: {
+  //   historyApiFallback: true,
+  //   noInfo: true,
+  //   overlay: true,
+  // },
+  // performance: {
+  //   hints: false,
+  // },
+  // devtool: '#eval-source-map',
 };
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map';
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"',
-      },
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false,
-      },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-    }),
-  ]);
-}

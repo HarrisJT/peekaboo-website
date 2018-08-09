@@ -3,26 +3,32 @@ var path = require('path');
 var compression = require('compression');
 var helmet = require('helmet');
 var morgan = require('morgan');
-var debug = require('debug')('app')
-var app = express();
+var debug = require('debug')('app');
+var favicon = require('serve-favicon');
 
-// const isDev = (process.env.NODE_ENV || 'development') === 'development'
+var app = express();
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+
+// const isDev = (process.env.NODE_ENV || 'development') === 'development';
+console.log(process.env.NODE_ENV);
+console.log('in index.js')
+debug('ENV: %s', process.env.NODE_ENV);
 
 // if (isDev) {
-//   const webpack = require('webpack')
-//   const webpackConfig = require('../webpack.config')
-//   const compiler = webpack(webpackConfig)
+//   var webpack = require('webpack');
+//   var webpackConfig = require('../webpack.config');
+//   var compiler = webpack(webpackConfig);
 
 //   app.use(require('webpack-dev-middleware')(compiler, {
 //     noInfo: true, publicPath: webpackConfig.output.publicPath
-//   }))
-//   app.use(require('webpack-hot-middleware')(compiler))
+//   }));
+//   app.use(require('webpack-hot-middleware')(compiler));
 // }
 
 // not sure if this is necessary
 try {
   process.on('uncaughtException', function(er) {
-    debug('Error: %o', er.stack)
+    debug('Error: %o', er.stack);
     console.error(er.stack);
     process.exit(1);
   });
@@ -44,5 +50,5 @@ try {
 
   app.listen(process.env.PORT || 8080, () => console.log('Server running!'));
 } catch(err) {
-  debug('Error: %o', err)
+  debug('Error: %o', err);
 }
