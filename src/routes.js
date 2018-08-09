@@ -1,12 +1,15 @@
-import Homepage from './pages/Homepage.vue'
-import Careers from './pages/Careers.vue'
+import Homepage from './pages/Homepage.vue';
+import Careers from './pages/Careers.vue';
 
-export default [{
+export default [
+  {
     path: '/',
     component: Homepage,
-    name: 'homepage'
-}, {
+    name: 'homepage',
+  },
+  {
     path: '/careers',
     component: Careers,
-    name: 'careers'
-}]
+    name: 'careers',
+  },
+];

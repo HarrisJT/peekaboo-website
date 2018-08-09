@@ -1,15 +1,15 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
   entry: {
-    app: './src/main.js'
+    app: './src/main.js',
   },
   output: {
     path: path.resolve(__dirname, './public/dist'),
     publicPath: '/dist/',
-    filename: 'bundle.[name].js'
+    filename: 'bundle.[name].js',
   },
   module: {
     rules: [
@@ -17,7 +17,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
+          'css-loader',
         ],
       },
       {
@@ -25,7 +25,7 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          'sass-loader',
         ],
       },
       {
@@ -33,7 +33,7 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader?indentedSyntax'
+          'sass-loader?indentedSyntax',
         ],
       },
       {
@@ -44,87 +44,87 @@ module.exports = {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': [
+            scss: [
               'vue-style-loader',
               'css-loader',
-              'sass-loader'
+              'sass-loader',
             ],
-            'sass': [
+            sass: [
               'vue-style-loader',
               'css-loader',
-              'sass-loader?indentedSyntax'
-            ]
+              'sass-loader?indentedSyntax',
+            ],
           },
           transformToRequire: {
-            'img': 'src',
-            'image': 'xlink:href',
+            img: 'src',
+            image: 'xlink:href',
             'b-img': 'src',
             'b-img-lazy': ['src', 'blank-src'],
             'b-card': 'img-src',
             'b-card-img': 'img-src',
             'b-carousel-slide': 'img-src',
-            'b-embed': 'src'
-          }
+            'b-embed': 'src',
+          },
           // other vue-loader options go here
-        }
+        },
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpg|gif|svg|jpeg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
-        }
+          name: '[name].[ext]?[hash]',
+        },
       },
       {
         test: /font.*\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         use: [{
-            loader: 'file-loader',
-            options: {
-                name: '[name].[ext]',
-                outputPath: 'fonts/'
-            }
-        }]
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/',
+          },
+        }],
       },
-    ]
+    ],
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      vue$: 'vue/dist/vue.esm.js',
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ['*', '.js', '.vue', '.json'],
   },
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
   },
   performance: {
-    hints: false
+    hints: false,
   },
-  devtool: '#eval-source-map'
-}
+  devtool: '#eval-source-map',
+};
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+  module.exports.devtool = '#source-map';
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
-      }
+        NODE_ENV: '"production"',
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
     new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
+      minimize: true,
+    }),
+  ]);
 }
