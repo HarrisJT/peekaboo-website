@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "reinstall": "rm -rf node_modules package-lock.json && npm i",
-    "pretest": "eslint --ignore-path .gitignore .",
+    "lint": "eslint --ignore-path .gitignore .",
     "watch": "nodemon server/index.js -e js,pug",
     "start": "set DEBUG=app:* && node server/index.js",
     "build": "webpack --config webpack.config.js"
