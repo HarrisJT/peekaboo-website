@@ -1,28 +1,32 @@
-const express = require('express')
-const path = require('path')
-var compression = require('compression');
-var helmet = require('helmet');
+var express = require('express')
+var path = require('path')
+var compression = require('compression')
+var helmet = require('helmet')
+var morgan = require('morgan')
+// var debug = require('debug')('app')
+var app = express()
 
-const isDev = (process.env.NODE_ENV || 'development') === 'development'
-const app = express()
-try {
-  if (isDev) {
-    const webpack = require('webpack')
-    const webpackConfig = require('../webpack.config')
-    const compiler = webpack(webpackConfig)
+// const isDev = (process.env.NODE_ENV || 'development') === 'development'
 
-    app.use(require('webpack-dev-middleware')(compiler, {
-      noInfo: true, publicPath: webpackConfig.output.publicPath
-    }))
-    app.use(require('webpack-hot-middleware')(compiler))
-  }
+// try {
+  // if (isDev) {
+  //   const webpack = require('webpack')
+  //   const webpackConfig = require('../webpack.config')
+  //   const compiler = webpack(webpackConfig)
+
+  //   app.use(require('webpack-dev-middleware')(compiler, {
+  //     noInfo: true, publicPath: webpackConfig.output.publicPath
+  //   }))
+  //   app.use(require('webpack-hot-middleware')(compiler))
+  // }
 
   process.on('uncaughtException', function(er) {
-    debug('Error: %o', er.stack)
+    // debug('Error: %o', er.stack)
     console.error(er.stack)
     process.exit(1)
   })
-
+  
+  app.use(morgan('dev'))
   app.use(compression())
   app.use(helmet())
   app.set('view engine', 'pug')
@@ -33,6 +37,6 @@ try {
   })
   
   app.listen(process.env.PORT || 8080, () => console.log('Server running!'))
-} catch(err) {
-  debug('Error: %o', err)
-}
+// } catch(err) {
+//   debug('Error: %o', err)
+// }
