@@ -8,13 +8,13 @@
   "scripts": {
     "reinstall": "rm -rf node_modules package-lock.json && npm i",
     "lint": "eslint --ignore-path .gitignore .",
-    "watch": "nodemon server/index.js -e js,pug",
     "start": "set DEBUG=app:* && node server/index.js",
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "bootstrap": "^4.1.0",
     "compression": "^1.7.3",
+    "debug": "^3.1.0",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
     "morgan": "^1.9.0",
