@@ -194,9 +194,8 @@
                         .row
                             .col
                                 h4 Employment
-                                h6 Interested in joining our team? <br>
-                                h6
-                                    router-link(to="/careers") Click here!
+                                h6 Are you an occupational therapist and interested in joining our team? <br>
+                                h6 Click <router-link to="/careers">here</router-link> to fill out an application!
                                 // a(href="#")
                                 //     h4 Leave us some feedback!
                     div.copyright
