@@ -35,47 +35,47 @@
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/red-crayon.svg")
-                            h6 interoception
+                            h6 Interoception
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/orange-crayon.svg")
-                            h6 regulation
+                            h6 Regulation
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/green-crayon.svg")
-                            h6 sensory processing
+                            h6 Sensory processing
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/yellow-crayon.svg")
-                            h6 motor skills
+                            h6 Motor skills
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/purple-crayon.svg")
-                            h6 play
+                            h6 Play
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/blue-crayon.svg")
-                            h6 social skills
+                            h6 Social skills
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/red-crayon.svg")
-                            h6 foundations for <br> speech and language
+                            h6 Foundations for <br> speech and language
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/orange-crayon.svg")
-                            h6 feeding
+                            h6 Feeding
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/green-crayon.svg")
-                            h6 visual impairments
+                            h6 Visual impairments
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/yellow-crayon.svg")
-                            h6 hearing impairments
+                            h6 Hearing impairments
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/purple-crayon.svg")
-                            h6 assistive technology
+                            h6 Assistive technology
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/blue-crayon.svg")
@@ -83,7 +83,7 @@
                     li
                         div.treatment
                             img.crayon(src="../assets/img/crayons/red-crayon.svg")
-                            h6 trauma and attachment
+                            h6 Trauma and attachment
                 div.diagnosis.text-center
                     h5 All to help with common childhood diagnosis such as:
                     p Sensory processing dysfunction &bull; Developmental delays &bull; Fine motor delays &bull; Gross motor delays &bull; Clumsy/discoordinated &bull; Autism &bull; Cerebral Palsy &bull; Childhood syndromes &bull; Neurological conditions &bull; Prematurity &bull; Orthopedic conditions &bull; Hyperactivity &bull; Learning disability &bull; Feeding delays &bull; Trauma &bull; And more
