@@ -1,5 +1,6 @@
 import Homepage from './pages/Homepage.vue';
 import Careers from './pages/Careers.vue';
+import Apply from './pages/Apply.vue';
 
 export default [{
     path: '/',
@@ -9,4 +10,8 @@ export default [{
     path: '/careers',
     component: Careers,
     name: 'careers',
+}, {
+    path: '/apply',
+    component: Apply,
+    name: 'apply',
 }];
