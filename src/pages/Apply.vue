@@ -58,6 +58,6 @@
 
 <script>
 export default {
-    el: '#application',
+
 }
 </script>
