@@ -3,8 +3,8 @@
         section.application
             form(id="application")
                 input(v-model="firstName" placeholder="First")
-                input(v-model="middleName" placeholder="Middle")
-                input(v-model="lastName" placeholder="Last")
+                //- input(v-model="middleName" placeholder="Middle")
+                //- input(v-model="lastName" placeholder="Last")
 
                 //- input(v-model="streetName" placeholder="Street")
                 //- input(v-model="city" placeholder="City")
