@@ -5,7 +5,7 @@
                 h2 Are you an occupational therapist and interested in joining our team?
                 br
                 h4 Email your resumé to a.shimkus@peekabootherapy.com!
-                h4 Or click <router-link to="/apply">here</router-link>
+                h4 Or click <router-link to="/apply/#">here</router-link>
                 br
                 br
                 p <i>Peek-A-Boo Pediatric Therapy is an equal opportunity employer. <br>

@@ -2,61 +2,75 @@
     main
         section.application
             .container
-                .row
-                    .col-8.col-offset-2
-                        form(id="application")
-                            div.form-group
-                                label(for="firstName") Full Name
-                                input(id="firstName" type="text" v-model.trim="firstName" placeholder="First")
-                                input(type="text" v-model.trim="middleName" placeholder="Middle")
-                                input(type="text" v-model.trim="lastName" placeholder="Last")
-                            //- div.form-group
-                            //-     label(for="streetName") Current Address
-                            //-     input(id="streetName" type="text" v-model.trim="streetName" placeholder="Street")
-                            //-     input(type="text" v-model.trim="city" placeholder="City")
-                            //-     input(type="text" v-model.trim="state" placeholder="State")
-                            //-     input(type="text" v-model.trim="zipcode" placeholder="Zipcode")
-
-                //- input(v-model="phoneHome" placeholder="Home")
-                //- input(v-model="phoneMobile" placeholder="Mobile")
-                //- input(v-model="email" placeholder="Email")
-
-                //- input(v-model="ref1Name" placeholder="Name")
-                //- input(v-model="ref1Phone" placeholder="Phone")
-                //- input(v-model="ref1Occupation" placeholder="Occupation")
-                //- input(v-model="ref1Years" placeholder="Years Known")
-
-                //- input(v-model="ref2Name" placeholder="Name")
-                //- input(v-model="ref2Phone" placeholder="Phone")
-                //- input(v-model="ref2Occupation" placeholder="Occupation")
-                //- input(v-model="ref2Years" placeholder="Years Known")
-
-                //- input(v-model="ref3Name" placeholder="Name")
-                //- input(v-model="ref3Phone" placeholder="Phone")
-                //- input(v-model="ref3Occupation" placeholder="Occupation")
-                //- input(v-model="ref3Years" placeholder="Years Known")
-
-                //- input(v-model="prevEmpl1Name" placeholder="Name")
-                //- input(v-model="prevEmpl1Sup" placeholder="Supervisor")
-                //- input(v-model="prevEmpl1Phone" placeholder="Phone")
-                //- input(v-model="prevEmpl1Salary" placeholder="Final Salary")
-                //- input(v-model="prevEmpl1Reason" placeholder="Reason for Leaving?")
-
-                //- input(v-model="prevEmpl2Name" placeholder="Name")
-                //- input(v-model="prevEmpl2Sup" placeholder="Supervisor")
-                //- input(v-model="prevEmpl2Phone" placeholder="Phone")
-                //- input(v-model="prevEmpl2Salary" placeholder="Final Salary")
-                //- input(v-model="prevEmpl2Reason" placeholder="Reason for Leaving?")
-
-                //- input(v-model="school" placeholder="School")
-                //- input(v-model="gradYear" placeholder="Year Graduated")
-                //- input(v-model="nbcot" placeholder="NBCOT #")
-                //- input(v-model="expDate" placeholder="Date Expires")
-                //- input(v-model="license" placeholder="Colorado Licensure #")
-
-                //- input(v-model="currPosition" placeholder="Current position desired")
-                //- input(v-model="desiredRate" placeholder="Desired rate for service")
-                //- input(v-model="desiredHours" placeholder="Desired Hours per week")
+                .row.justify-content-center
+                    form(id="application")
+                        .form-group.p-3.dark
+                            h5 Full Name
+                            input(type="text" v-model.trim="firstName" placeholder="First")
+                            input(type="text" v-model.trim="middleName" placeholder="Middle")
+                            input(type="text" v-model.trim="lastName" placeholder="Last")
+                        br
+                        .form-group.p-3
+                            h5 Present Address
+                            input(type="text" v-model.trim="streetName" placeholder="Street")
+                            input(type="text" v-model.trim="city" placeholder="City")
+                            input(type="text" v-model.trim="state" placeholder="State")
+                            input(type="text" v-model.trim="zipcode" placeholder="Zipcode")
+                        br
+                        .form-group.p-3.dark
+                            h5 Contact Information
+                            input(type="text" v-model.trim="phoneHome" placeholder="Home")
+                            input(type="text" v-model.trim="phoneMobile" placeholder="Mobile")
+                            input(type="text" v-model.trim="email" placeholder="Email")
+                        br
+                        .form-group.p-3
+                            h5 Reference #1
+                            input(type="text" v-model="ref1Name" placeholder="Name")
+                            input(type="text" v-model="ref1Phone" placeholder="Phone")
+                            input(type="text" v-model="ref1Occupation" placeholder="Occupation")
+                            input(type="text" v-model="ref1Years" placeholder="Years Known")
+                        br
+                        .form-group.p-3.dark
+                            h5 Reference #2
+                            input(type="text" v-model="ref2Name" placeholder="Name")
+                            input(type="text" v-model="ref2Phone" placeholder="Phone")
+                            input(type="text" v-model="ref2Occupation" placeholder="Occupation")
+                            input(type="text" v-model="ref2Years" placeholder="Years Known")
+                        br
+                        .form-group.p-3
+                            h5 Reference #3
+                            input(type="text" v-model="ref3Name" placeholder="Name")
+                            input(type="text" v-model="ref3Phone" placeholder="Phone")
+                            input(type="text" v-model="ref3Occupation" placeholder="Occupation")
+                            input(type="text" v-model="ref3Years" placeholder="Years Known")
+                        br
+                        .form-group.p-3.dark
+                            h5 Previous Employer #1
+                            input(type="text" v-model="prevEmpl1Name" placeholder="Name")
+                            input(type="text" v-model="prevEmpl1Sup" placeholder="Supervisor")
+                            input(type="text" v-model="prevEmpl1Phone" placeholder="Phone")
+                            input(type="text" v-model="prevEmpl1Salary" placeholder="Final Salary")
+                            input(type="text" v-model="prevEmpl1Reason" placeholder="Reason for Leaving?")
+                        br
+                        h5 Option to add another
+                        br
+                        .form-group.p-3
+                            h5 Highest Level of Education
+                            input(type="text" v-model="school" placeholder="School")
+                            input(type="text" v-model="gradYear" placeholder="Year Graduated")
+                        br
+                        .form-group.p-3.dark
+                            h5 NBCOT #
+                            input(type="text" v-model="nbcot" placeholder="NBCOT #")
+                            input(type="text" v-model="nbcotDate" placeholder="Date Expires")
+                            input(type="text" v-model="license" placeholder="Colorado Licensure #")
+                            input(type="text" v-model="licenseDate" placeholder="Date Expires")
+                        br
+                        .form-group.p-3
+                            h5 Current Position Desired
+                            input(type="text" v-model="currPosition" placeholder="Current position desired")
+                            input(type="text" v-model="desiredRate" placeholder="Desired rate for service")
+                            input(type="text" v-model="desiredHours" placeholder="Desired Hours per week")
 
 
 
@@ -67,7 +81,41 @@ export default {
     data: () => ({
         firstName: null,
         middleName: null,
-        lastName: null
+        lastName: null,
+        streetName: null,
+        city: null,
+        state: null,
+        zipcode: null,
+        phoneHome: null,
+        phoneMobile: null,
+        email: null,
+        ref1Name: null,
+        ref1Phone: null,
+        ref1Occupation: null,
+        ref1Years: null,
+        ref2Name: null,
+        ref2Phone: null,
+        ref2Occupation: null,
+        ref2Years: null,
+        ref3Name: null,
+        ref3Phone: null,
+        ref3Occupation: null,
+        ref3Years: null,
+        prevEmpl1Name: null,
+        prevEmpl1Sup: null,
+        prevEmpl1Phone: null,
+        prevEmpl1Salary: null,
+        prevEmpl1Reason: null,
+        school: null,
+        gradYear: null,
+        nbcot: null,
+        nbcotDate: null,
+        license: null,
+        licenseDate: null,
+        currPosition: null,
+        desiredRate: null,
+        desiredHours: null
+
     })
 }
 </script>
@@ -264,5 +312,11 @@ export default {
 
 
 <style lang="scss">
+.dark {
+    background-color: #F2F2F2;
+}
 
+.form-group {
+    margin-bottom: 0rem;
+}
 </style>
